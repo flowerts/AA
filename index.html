@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AA Challenge</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="neon-header" role="banner">
+      <div>
+        <h1>AA Challenge</h1>
+        <p class="subtitle">Desktop Training Board</p>
+      </div>
+      <nav aria-label="Utility">
+        <button id="open-abbreviations" type="button">Abbreviations</button>
+        <button id="open-references" type="button">References</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="status-bar" aria-live="polite">
+        <strong>Current view:</strong>
+        <span id="view-state">Board</span>
+      </section>
+
+      <section aria-label="AA Challenge board">
+        <div id="board" class="board" role="grid" aria-label="Category question board"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="qa-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="qa-title">
+    <div class="modal-card">
+      <h2 id="qa-title">Question</h2>
+      <p id="qa-category" class="eyebrow"></p>
+      <p id="qa-value" class="eyebrow"></p>
+      <p id="qa-content"></p>
+      <p id="qa-learn" class="learn hidden"></p>
+      <div class="modal-actions">
+        <button id="show-answer" type="button">Show answer</button>
+        <button id="show-learn-more" type="button" class="hidden">Learn more</button>
+        <button id="open-score-popup" type="button" class="hidden">View scoring details</button>
+        <button id="close-qa" type="button">Back to board</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="score-popup" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="score-title">
+    <div class="modal-card nested">
+      <h3 id="score-title">Scoring detail</h3>
+      <p>This question is worth <strong id="score-value"></strong> points toward your completion score.</p>
+      <button id="close-score" type="button">Close scoring detail</button>
+    </div>
+  </div>
+
+  <div id="abbreviations-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="abbr-title">
+    <div class="modal-card">
+      <h2 id="abbr-title">Abbreviations</h2>
+      <ul>
+        <li><strong>AA:</strong> Awareness Activity</li>
+        <li><strong>KPI:</strong> Key Performance Indicator</li>
+        <li><strong>SOP:</strong> Standard Operating Procedure</li>
+      </ul>
+      <button data-close-modal="abbreviations-modal" type="button">Close</button>
+    </div>
+  </div>
+
+  <div id="references-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="ref-title">
+    <div class="modal-card">
+      <h2 id="ref-title">References</h2>
+      <ul>
+        <li>AA Challenge Guide (placeholder)</li>
+        <li>Operations Playbook (placeholder)</li>
+        <li>Compliance Notes (placeholder)</li>
+      </ul>
+      <button data-close-modal="references-modal" type="button">Close</button>
+    </div>
+  </div>
+
+  <script src="scripts/app.js"></script>
+</body>
+</html>

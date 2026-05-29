@@ -1,0 +1,116 @@
+:root {
+  --bg: #020617;
+  --panel: #111827;
+  --neon: #22d3ee;
+  --neon-soft: #67e8f9;
+  --text: #e5e7eb;
+  --tile: #1e3a8a;
+  --tile-focus: #2563eb;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #0f172a, var(--bg));
+  color: var(--text);
+}
+
+.app-shell {
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.neon-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--neon);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.35);
+  border-radius: 10px;
+  padding: 14px 18px;
+  background: rgba(15, 23, 42, 0.9);
+}
+
+h1 { margin: 0; color: var(--neon-soft); }
+.subtitle { margin: 4px 0 0; font-size: 0.9rem; }
+.status-bar { margin: 14px 0; }
+
+button {
+  background: #0f172a;
+  color: var(--text);
+  border: 1px solid var(--neon);
+  border-radius: 6px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+button:focus-visible {
+  outline: 2px solid #facc15;
+  outline-offset: 2px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.category,
+.tile {
+  min-height: 60px;
+  border-radius: 8px;
+  border: 1px solid #1d4ed8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+}
+
+.category {
+  background: #0b2f77;
+  font-weight: bold;
+}
+
+.tile {
+  background: var(--tile);
+  font-size: 1.2rem;
+}
+
+.tile:hover,
+.tile:focus-visible { background: var(--tile-focus); }
+.tile.completed {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.modal-card {
+  width: min(680px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--neon);
+  border-radius: 10px;
+  padding: 18px;
+}
+.modal-card.nested {
+  width: min(430px, 100%);
+}
+.hidden { display: none; }
+.eyebrow { color: var(--neon-soft); margin: 4px 0; }
+.learn { margin-top: 12px; color: #d1fae5; }
+.modal-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+
+@media (max-width: 1024px) {
+  .board { grid-template-columns: repeat(3, minmax(100px, 1fr)); }
+}
