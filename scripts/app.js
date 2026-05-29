@@ -25,7 +25,7 @@
       { value: 100, question: 'Why retain records?', answer: 'To meet policy and legal requirements.', learnMore: 'Retention schedules simplify audits.' },
       { value: 200, question: 'What is least privilege?', answer: 'Users get minimum access needed.', learnMore: 'Least privilege limits blast radius on incidents.' },
       { value: 300, question: 'How often review permissions?', answer: 'At regular intervals and role changes.', learnMore: 'Access reviews catch dormant privilege drift.' },
-      { value: 400, question: 'What is attestations purpose?', answer: 'Confirm required controls are active.', learnMore: 'Attestations create accountability evidence.' },
+      { value: 400, question: 'What is attestation purpose?', answer: 'Confirm required controls are active.', learnMore: 'Attestations create accountability evidence.' },
       { value: 500, question: 'What is policy exception tracking?', answer: 'Documenting approved temporary deviations.', learnMore: 'Exception logs ensure expiry and revalidation.' }
     ]},
     { name: 'Culture', questions: [
@@ -135,7 +135,7 @@
         var tile = document.createElement('button');
         tile.type = 'button';
         tile.className = 'tile';
-        tile.textContent = q. value;
+        tile.textContent = q.value;
         tile.setAttribute('role', 'gridcell');
         tile.setAttribute('aria-label', category.name + ' for ' + q.value + ' points');
         tile.dataset.category = String(categoryIndex);
@@ -149,10 +149,11 @@
 
         tile.addEventListener('click', function (event) {
           var target = event.currentTarget;
-          var selected = categories[Number(target.dataset.category)].questions[Number(target.dataset.question)];
+          var selectedCategory = categories[Number(target.dataset.category)];
+          var selected = selectedCategory.questions[Number(target.dataset.question)];
           current = selected;
-          qaCategory.textContent = category.name;
-          qaValue.textContent = q.value + ' points';
+          qaCategory.textContent = selectedCategory.name;
+          qaValue.textContent = selected.value + ' points';
           setQuestionPhase('question');
           openModal(qaModal, 'Question');
         });
